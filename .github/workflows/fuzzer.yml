@@ -10,7 +10,7 @@ on:
 
 jobs:
   fuzzing:
-    runs-on: windows-latest
+    runs-on: ubuntu-latest
     steps:
     - name: Check out repository
       uses: actions/checkout@v3
@@ -21,7 +21,8 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    - name: Build and Run Fuzzer
+    - name: Run Fuzzer
       run: |
+        chmod +x html_parser-linux
         javac Fuzzer.java
-        java Fuzzer "html_parser-windows.exe"
+        java Fuzzer "./html_parser-linux"
