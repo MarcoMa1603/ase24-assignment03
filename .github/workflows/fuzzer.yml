@@ -23,6 +23,6 @@ jobs:
 
     - name: Run Fuzzer
       run: |
-        chmod +x html_parser-linux
-        javac Fuzzer.java
-        java Fuzzer "./html_parser-linux"
+        chmod +x html_parser_linux_x86_64
+        javac -encoding UTF-8 Fuzzer.java
+        java Fuzzer "./html_parser_linux_x86_64"
