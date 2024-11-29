@@ -1,0 +1,27 @@
+name: Run Fuzzer
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  fuzzing:
+    runs-on: windows-latest
+    steps:
+    - name: Check out repository
+      uses: actions/checkout@v3
+
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Build and Run Fuzzer
+      run: |
+        javac Fuzzer.java
+        java Fuzzer "html_parser-windows.exe"
